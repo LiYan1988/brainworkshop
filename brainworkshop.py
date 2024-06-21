@@ -2850,14 +2850,14 @@ class KeysListLabel:
             str_list.append('\n')
             if mode.manual:
                 str_list.extend([
-                    _('F1: Decrease N-Back\n'),
-                    _('F2: Increase N-Back\n'), '\n',
-                    _('F3: Decrease Trials\n'),
-                    _('F4: Increase Trials\n'), '\n'])
+                    _('1: Decrease N-Back\n'),
+                    _('2: Increase N-Back\n'), '\n',
+                    _('3: Decrease Trials\n'),
+                    _('4: Increase Trials\n'), '\n'])
             if mode.manual:
                 str_list.extend([
-                    _('F5: Decrease Speed\n'),
-                    _('F6: Increase Speed\n'), '\n',
+                    _('5: Decrease Speed\n'),
+                    _('6: Increase Speed\n'), '\n',
                     _('C: Choose Game Type\n'),
                     _('S: Select Sounds\n')])
             str_list.append(_('I: Select Images\n'))
@@ -4520,37 +4520,37 @@ def on_key_press(symbol, modifiers):
             graph.graph = mode.mode
             mode.draw_graph = True
 
-        elif symbol == key.F1 and mode.manual:
+        elif symbol == key._1 and mode.manual:
             if mode.back > 1:
                 mode.back -= 1
                 gameModeLabel.flash()
                 spaceLabel.update()
                 sessionInfoLabel.update()
 
-        elif symbol == key.F2 and mode.manual:
+        elif symbol == key._2 and mode.manual:
             mode.back += 1
             gameModeLabel.flash()
             spaceLabel.update()
             sessionInfoLabel.update()
 
-        elif symbol == key.F3 and mode.num_trials > 5 and mode.manual:
+        elif symbol == key._3 and mode.num_trials > 5 and mode.manual:
             mode.num_trials -= 5
             mode.num_trials_total = mode.num_trials + mode.num_trials_factor * \
                 mode.back ** mode.num_trials_exponent
             sessionInfoLabel.flash()
 
-        elif symbol == key.F4 and mode.manual:
+        elif symbol == key._4 and mode.manual:
             mode.num_trials += 5
             mode.num_trials_total = mode.num_trials + mode.num_trials_factor * \
                 mode.back ** mode.num_trials_exponent
             sessionInfoLabel.flash()
 
-        elif symbol == key.F5 and mode.manual:
+        elif symbol == key._5 and mode.manual:
             if mode.ticks_per_trial < TICKS_MAX:
                 mode.ticks_per_trial += 1
                 sessionInfoLabel.flash()
 
-        elif symbol == key.F6 and mode.manual:
+        elif symbol == key._6 and mode.manual:
             if mode.ticks_per_trial > TICKS_MIN:
                 mode.ticks_per_trial -= 1
                 sessionInfoLabel.flash()
